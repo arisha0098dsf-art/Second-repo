@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{margin: 0px; padding: 0px;}
+    body{
+        background: linear-gradient( rgb(2, 25, 59), rgb(2, 56, 56), rgb(4, 49, 49));
+        height: 100vh;
+    }
+    .container{
+        height: 2200px;
+        width: 1300px;
+        background-color: rgb(7, 45, 54);
+        border-radius: 15px;
+        position: absolute;
+        top: 30px;
+        left:25px ;
+    }
+    h1{
+        color: aquamarine;
+        font-size: 72px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:Cambria (Headings);
+         text-shadow: 0px 0px 17px rgb(81, 194, 225);
+         position: absolute;
+         top: 13px;
+         left: 330px;
+        
+    }
+    .subtitle{
+        color: rgb(238, 232, 232);
+        font-size: 22px;
+        position: absolute;
+        top: 110px;
+        left: 460px;
+       
+    }
+    .earth{
+        background-color: rgb(33, 84, 98);
+        width: 1100px;
+        height: 3px;
+        border: 0px;
+        position: absolute;
+        top: 160px;
+        left: 100px;
+    }
+   
+    .stopwatch-container{
+        background-color: rgb(29, 66, 76);
+        height: 960px;
+        width: 1200px;
+        position: absolute;
+        top: 200px;
+        left: 20px;
+        border-radius: 20px ;
+
+    }
+    .time-display{
+        background-color: rgb(5, 20, 33);
+        height: 280px;
+        width: 1100px;
+        position: absolute;
+        top: 50px;
+        left: 45px;
+        border-radius: 20px;
+        border: 2px solid rgb(108, 108, 195);
+    }
+    .time-section{
+        background-color: rgb(7, 4, 28);
+        height: 130px;
+        width: 140px;
+        position: absolute;
+        top: 30px;
+        left: 130px;
+        border-radius: 15px;
+        
+    }
+    /* .time-unit{
+        font-size: 30px;
+    } */
+    .time-1value{
+        color: aqua;
+        font-size: 110px;
+        position: absolute;
+        left: 12px;
+        top: 2px;
+        text-shadow: 0px 0px 12px rgb(173, 216, 233);
+      
+    }
+    .time-1label{
+        color: white;
+        font-size: 25px;
+        position: absolute;
+        top: 140px;
+        left: 20px;
+        text-shadow: 0px 0px 2px rgb(174, 223, 242);
+    }
+    .time-1separator{
+        color: aqua;
+        /* width: 100px;
+        height: 100px; */
+        font-size: 160px;
+        position: absolute;
+        top: -30px;
+        left: 150px;
+        font-weight: 700;
+    }
+    .time-2unit{
+        background-color: rgb(7, 4, 28);
+        height: 130px;
+        width: 140px;
+        position: absolute;
+        top: -1px;
+        left: 210px;
+        border-radius: 15px;
+        
+    }
+    .time-2value{
+        color: aqua;
+        font-size: 110px;
+        position: absolute;
+        left: 12px;
+        top: 2px;
+        text-shadow: 0px 0px 12px rgb(173, 216, 233);
+    }
+    .time-2label{
+        color: white;
+        font-size: 23px;
+        position: absolute;
+        top: 140px;
+        left: 20px;
+        text-shadow: 0px 0px 2px rgb(174, 223, 242);
+    }
+    .time-2separator{
+        color: aqua;
+        /* width: 100px;
+        height: 100px; */
+        font-size: 160px;
+        position: absolute;
+        top: -30px;
+        left: 360px;
+        font-weight: 700;
+    }
+    .time-3unit{
+        background-color: rgb(7, 4, 28);
+        height: 130px;
+        width: 140px;
+        position: absolute;
+        top: -1px;
+        left: 420px;
+        border-radius: 15px;
+        
+    }
+    .time-3value{
+        color: aqua;
+        font-size: 110px;
+        position: absolute;
+        left: 12px;
+        top: 2px;
+        text-shadow: 0px 0px 12px rgb(173, 216, 233);
+    }
+    .time-3label{
+        color: white;
+        font-size: 23px;
+        position: absolute;
+        top: 140px;
+        left: 20px;
+        text-shadow: 0px 0px 2px rgb(174, 223, 242);
+    }
+    .time-3separator{
+        color: aqua;
+        /* width: 100px;
+        height: 100px; */
+        font-size: 160px;
+        position: absolute;
+        top: -30px;
+        left: 570px;
+        font-weight: 700;
+
+    }
+    .time-4unit{
+        background-color: rgb(7, 4, 28);
+        height: 110px;
+        width: 200px;
+        position: absolute;
+        top: 10px;
+        left: 630px;
+        border-radius: 15px;
+        
+    }
+    .time-4value{
+        color:orangered;
+        font-size: 110px;
+        position: absolute;
+        left: 15px;
+        top: -7px;
+        text-shadow: 0px 0px 12px rgb(238, 178, 142);
+      
+    }
+    .time-4label{
+        color: white;
+        font-size: 23px;
+        position: absolute;
+        top: 120px;
+        left: 21px;
+        text-shadow: 0px 0px 2px rgb(174, 223, 242);
+    }
+    .total-3time{
+        color: rgb(235, 233, 233);
+        font-size: 23px;
+        position: absolute;
+        top: 230px;
+        left: 430px;
+    }
+   .d1{
+    color: rgb(155, 220, 245);
+    
+   }
+   /* .controls{
+    height: 100px;
+    width: 150px;
+    background: linear-gradient(rgb(13, 172, 100) , rgb(95, 206, 95) , rgb(19, 223, 19) );
+   } */
+   .btn start-btn{
+    height: 100px;
+    width: 150px;
+    background: linear-gradient( rgb(13, 172, 100) , rgb(95, 206, 95) , rgb(19, 223, 19) );
+   
+   
+   }
+  #startBtn{
+    background: linear-gradient(90deg, rgb(13, 172, 100) , rgb(95, 206, 95) , rgb(19, 223, 19) );
+    height: 80px;
+    width: 190px;
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 400px;
+    left: 140px;
+   
+   }
+  
+  
+   
+   
+  
+   #pauseBtn{
+    background: linear-gradient(90deg, rgb(158, 133, 58) , rgb(188, 134, 32), rgb(175, 152, 21));
+    height: 80px;
+    width: 190px;
+    color:gray;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 400px;
+    left: 370px;
+   }
+  
+  
+   #resumeBtn{
+    background: linear-gradient(90deg, rgb(100, 37, 110) , rgb(111, 6, 117), rgb(97, 29, 131));
+    height: 80px;
+    width: 190px;
+    color: gray;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 400px;
+    left: 600px;
+   }
+  
+    #resetBtn{
+    background: linear-gradient(90deg, rgb(236, 68, 12) , rgb(230, 94, 20), rgb(233, 90, 58));
+    height: 80px;
+    width: 190px;
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 400px;
+    left: 830px;
+   }
+    #lapBtn{
+    background: linear-gradient(90deg, rgb(19, 85, 133) , rgb(45, 134, 189), rgb(50, 117, 137));
+    height: 80px;
+    width: 220px;
+    color: gray;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 520px;
+    left: 340px;
+   }
+    #clearLapsBtn{
+    background: linear-gradient(90deg, rgb(72, 35, 89) , rgb(83, 60, 115), rgb(52, 12, 67));
+    height: 80px;
+    width: 220px;
+    color: gray;
+    font-size: 25px;
+    border: none;
+    border-radius: 15px;
+    position: absolute;
+    top: 520px;
+    left: 600px;
+   }
+  
+   .lap-times-container{
+    height: 280px;
+    width: 1100px;
+    background-color: rgb(5, 20, 33) ;
+    position: absolute;
+    top: 640px;
+    left: 50px;
+   border-radius: 10px;
+}
+h3{
+    font-size: 40px;
+    color: rgb(68, 203, 230);
+    font-family: sans-serif;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.empty-laps{
+font-size: 30px;
+color: rgb(121, 120, 120);
+position: absolute;
+top: 130px;
+left: 380px;
+}
+.stats-card{
+    background-color:rgb(28, 46, 65)  ;
+    height: 180px;
+    width: 370px;
+    position: absolute;
+    top: 1200px;
+    left: 23px;
+    border-radius: 10px;
+   border-top: 8px skyblue solid;
+}
+#lapCount{
+    color: white;
+    font-size: 70px;
+    position: absolute;
+    top: 25px;
+    left: 160px;
+}
+.stata-label{
+    color: white;
+    font-size: 37px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+.states-card{
+    background-color:rgb(28, 46, 65);
+    height: 180px;
+    width: 370px;
+    position: absolute;
+    top: 1200px;
+    left: 440px;
+    border-radius: 10px;
+   border-top: 8px greenyellow solid;
+}
+#fastestLap{
+    color: white;
+    font-size: 70px;
+    position: absolute;
+    top: 25px;
+    left: 50px;
+}
+.statb-label{
+    color: white;
+    font-size: 37px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+.statess-card{
+    background-color:  rgb(28, 46, 65);
+    height: 180px;
+    width: 370px;
+    position: absolute;
+    top: 1200px;
+    left: 850px;
+    border-radius: 10px;
+   border-top: 8px rgb(242, 66, 66) solid;
+}
+#slowestLap{
+    color: white;
+    font-size: 70px;
+    position: absolute;
+    top: 25px;
+    left: 50px;
+}
+.statc-label{
+    color: white;
+    font-size: 37px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+.instructions{
+    background-color: rgb(5, 20, 33) ;
+    height: 630px;
+    width: 1200px;
+    position: absolute;
+    top: 1420px;
+    left: 23px;
+    border-radius: 10px;
+}
+h2{
+    color: rgb(12, 186, 249);
+    font-size: 35px;
+    font-family: sans-serif;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-weight: 800;
+}
+.instructiona-grid{
+    height: 230px;
+    width: 350px;
+    background-color:rgb(28, 46, 65)  ;
+    position: absolute;
+    top: 90px;
+    left: 23px;
+    border-radius: 20px;
+}
+.instructiona{
+    color: white;
+    height: 80px;
+    width: 80px;
+    background: linear-gradient(90deg, rgb(5, 171, 107),rgb(97, 252, 97),rgb(11, 240, 11));
+    border-radius: 40px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.q{
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    position: absolute;
+    top: 100px;
+    left: -5px;
+}
+.a1{
+    color: rgb(190, 188, 188);
+    font-size: 23px;
+    position: absolute;
+    top:160px ;
+    left: 10px;
+}
+
+.instructionb{
+    color: white;
+    height: 230px;
+    width: 350px;
+    border-radius: 20px;
+    position: absolute;
+    top: 2px;
+    left: 400px;
+    background-color:rgb(28, 46, 65)  ;
+    /* font-size: 0px; */
+    
+}
+.instruction1-icon {
+    color: white;
+    background: linear-gradient(90deg, rgb(242, 159, 5) , rgb(242, 198, 117) , rgb(212, 146, 23));
+    font-size: 30px;
+    font-weight: 700;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.r{
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    position: absolute;
+    top: 110px;
+    left: 15px;
+}
+.a2{
+    color: rgb(190, 188, 188);
+    font-size: 23px;
+    position: absolute;
+    top:160px ;
+    left: 10px;
+}
+.instructionc{
+    color: white;
+    height: 230px;
+    width: 350px;
+    border-radius: 20px;
+    position: absolute;
+    top: 2px;
+    left: 800px;
+    background-color:rgb(28, 46, 65)  ;
+    /* font-size: 0px; */
+    
+}
+.instruction2-icon{
+    color: white;
+    background: linear-gradient(90deg, rgb(245, 84, 245) , rgb(174, 54, 174) , purple);
+    font-size: 30px;
+    font-weight: 700;
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.s{
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    position: absolute;
+    top: 110px;
+    left: 15px;
+}
+p{
+    color: rgb(190, 188, 188);
+    font-size: 23px;
+    position: absolute;
+    top:160px ;
+    left: 10px;
+}
+.instructiond{
+    color: white;
+    height: 230px;
+    width: 350px;
+    border-radius: 20px;
+    position: absolute;
+    top: 260px;
+    left: -2px;
+    background-color:rgb(28, 46, 65)  ;
+  
+    
+}
+.instruction3-icon{
+    color: white;
+    background: linear-gradient(90deg, red, rgb(242, 49, 49) , rgb(198, 59, 59));
+    font-size: 30px;
+    font-weight: 700;
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.t{color: white;
+    font-size: 28px;
+    font-weight: 700;
+    position: absolute;
+    top: 110px;
+    left: 15px;
+
+}
+p{
+    color: rgb(190, 188, 188);
+    font-size: 23px;
+    position: absolute;
+    top:160px ;
+    left: 10px;
+}
+.instructione{
+    color: white;
+    height: 230px;
+    width: 350px;
+    border-radius: 20px;
+    position: absolute;
+    top: 260px;
+    left: 400px;
+    background-color:rgb(28, 46, 65)  ;
+    /* font-size: 0px; */
+    
+}
+.instruction4-icon{
+    color: white;
+    background: linear-gradien(90deg ,rgb(45, 176, 227), skyblue, rgb(45, 143, 182));
+    font-size: 30px;
+    font-weight: 700;
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.u{
+    color: white;
+    font-size: 26px;
+    font-weight: 700;
+    position: absolute;
+    top: 110px;
+    left: 15px;
+}
+p{
+    color: rgb(190, 188, 188);
+    font-size: 23px;
+    position: absolute;
+    top:160px ;
+    left: 10px;
+}
+.instructionf{
+    color: white;
+    height: 230px;
+    width: 350px;
+    border-radius: 20px;
+    position: absolute;
+    top: 260px;
+    left: 800px;
+    background-color:rgb(28, 46, 65)  ;
+    /* font-size: 0px; */
+    
+}
+.instruction5-icon{
+    color: white;
+    background: linear-gradient(90deg, rgb(223, 98, 21),rgb(214, 90, 44),rgb(236, 121, 20));
+    font-size: 30px;
+    font-weight: 700;
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.v{
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    position: absolute;
+    top: 110px;
+    left: 15px;
+}
+p{
+    color: rgb(190, 188, 188);
+    font-size: 23px;
+    position: absolute;
+    top:160px ;
+    left: 10px;
+}
+.nm{
+   height: 2px;
+   width: 1230px;
+   background-color: rgb(7, 98, 95);
+   position: absolute;
+   top: 2100px;
+   left: 15px;
+}
+h6{
+    position: absolute;
+    width: 800px;
+    top: -120px;
+    left: 300px;
+}
+</style>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-stopwatch"></i> Precision Stopwatch</h1>
+            <p class="subtitle">High-precision timer with millisecond accuracy</p>
+            <hr class="earth">
+        </header>
+
+        <main>
+            <div class="stopwatch-container">
+                <div class="time-display">
+                    <div class="time-section">
+                        <div class="time-1unit">
+                            <div class="time-1value" id="hours">00</div>
+                            <div class="time-1label">HOURS</div>
+                        </div>
+                        <div class="time-1separator">:</div>
+                        <div class="time-2unit">
+                            <div class="time-2value" id="minutes">00</div>
+                            <div class="time-2label">MINUTES</div>
+                        </div>
+                        <div class="time-2separator">:</div>
+                        <div class="time-3unit">
+                            <div class="time-3value" id="seconds">00</div>
+                            <div class="time-3label">SECONDS</div>
+                        </div>
+                        <div class="time-3separator">:</div>
+                        <div class="time-4unit">
+                            <div class="time-4value" id="milliseconds">000</div>
+                            <div class="time-4label">MILLISECONDS</div>
+                        </div>
+                    </div>
+                    
+                    <div class="total-3time" id="totalTime">
+                        Total: <span class="d1">00:00:00.000</span>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn start-btn" id="startBtn">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button class="btn pause-btn" id="pauseBtn" disabled>
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                    <button class="btn resume-btn" id="resumeBtn" disabled>
+                        <i class="fas fa-redo"></i> Resume
+                    </button>
+                    <button class="btn reset-btn" id="resetBtn">
+                        <i class="fas fa-stop"></i> Reset
+                    </button>
+                </div>
+
+                <div class="additional-controls">
+                    <button class="btn lap-btn" id="lapBtn">
+                        <i class="fas fa-flag"></i> Lap Time
+                    </button>
+                    <button class="btn clear-laps-btn" id="clearLapsBtn">
+                        <i class="fas fa-trash"></i> Clear Laps
+                    </button>
+                </div>
+
+                <div class="lap-times-container">
+                    <h3><i class="fas fa-list-ol"></i> Lap Times</h3>
+                    <div class="lap-times" id="lapTimes">
+                        <div class="empty-laps">No lap times recorded yet</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stats-card">
+                    <div class="stat-value" id="lapCount">0</div>
+                    <div class="stata-label">Lap Count</div>
+                </div>
+                <div class="states-card">
+                    <div class="stat-value" id="fastestLap">--:--:--.---</div>
+                    <div class="statb-label">Fastest Lap</div>
+                </div>
+                <div class="statess-card">
+                    <div class="stat-value" id="slowestLap">--:--:--.---</div>
+                    <div class="statc-label">Slowest Lap</div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h2><i class="fas fa-info-circle"></i> How to Use</h2>
+                <div class="instructiona-grid">
+                    <div class="instructiona">
+                        <div class="instruction-icon start">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <h3 class="q">Start</h3>
+                        <p class="a1">Begin the stopwatch timer. Click again to continue from current time.</p>
+                    </div>
+                    <div class="instructionb">
+                        <div class="instruction1-icon pause">
+                            <i class="fas fa-pause"></i>
+                        </div>
+                        <h3 class="r">Pause</h3>
+                        <p class="a2">Temporarily stop the timer without resetting the time.</p>
+                    </div>
+                    <div class="instructionc">
+                        <div class="instruction2-icon resume">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                        <h3 class="s">Resume</h3>
+                        <p class="a3">Continue timing from where you paused.</p>
+                    </div>
+                    <div class="instructiond">
+                        <div class="instruction3-icon reset">
+                            <i class="fas fa-stop"></i>
+                        </div>
+                        <h3 class="t">Reset</h3>
+                        <p class="a4">Reset the timer to zero and clear all lap times.</p>
+                    </div>
+                    <div class="instructione">
+                        <div class="instruction4-icon lap">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h3 class="u">Lap Time</h3>
+                        <p class="a5">Record the current time while the stopwatch continues running.</p>
+                    </div>
+                    <div class="instructionf">
+                        <div class="instruction5-icon keyboard">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h3 class="v">Keyboard Shortcuts</h3>
+                        <p class="a6"><strong>Space </strong>: Start/Pause • <strong>L</strong>: Lap • <strong>R</strong>: Reset</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="nm">
+            <h6><p>Precision Stopwatch &copy; <span id="currentYear">2023</span> | Click on the time display to start/stop</p></h6>
+        </footer>
+    </div>
+
+    <script src="script.js">
+        
+    </script>
+</body>
+</html>
